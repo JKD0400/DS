@@ -39,7 +39,7 @@ def create_llm_and_embedder():
         # You can pass in the URL to a GGML model to download it automatically
         model_url="https://huggingface.co/TheBloke/Llama-2-13B-chat-GGML/resolve/main/llama-2-13b-chat.ggmlv3.q4_0.bin",
         # optionally, you can set the path to a pre-downloaded model instead of model_url
-        model_path="llama-2-7b-chat.Q2_K.gguf",
+        model_path=None,
         temperature=0.1,
         max_new_tokens=256,
         # llama2 has a context window of 4096 tokens, but we set it lower to allow for some wiggle room
