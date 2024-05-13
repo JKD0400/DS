@@ -63,7 +63,7 @@ def create_llm_and_embedder():
         max_new_tokens=256,
         context_window=3900,
         generate_kwargs={},
-        model_kwargs={"n_gpu_layers": -1},  # if compiled to use GPU
+        model_kwargs={"n_gpu_layers": 10},  # if compiled to use GPU
         messages_to_prompt=messages_to_prompt,
         completion_to_prompt=completion_to_prompt,
         verbose=True,
