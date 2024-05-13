@@ -25,3 +25,5 @@ llamaindex-py-client==0.1.19
 streamlit==1.34.0
 tensorflow==2.16.1
 torch==2.3.0
+sentence-transformers==2.7.0
+service-identity==18.1.0
