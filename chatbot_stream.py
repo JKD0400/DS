@@ -23,7 +23,7 @@ import torch
 import json
 import os
 
-model_url = "https://huggingface.co/TheBloke/Llama-2-13B-chat-GGML/resolve/main/llama-2-13b-chat.ggmlv3.q4_0.bin"
+model_url = "https://huggingface.co/TheBloke/LLaMA-7b-GGUF/blob/main/llama-7b.Q3_K_L.gguf"
 # Function to configure logging (optional)
 def configure_logging():
     logging.basicConfig(stream=sys.stdout, level=logging.INFO)
