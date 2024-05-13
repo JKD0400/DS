@@ -35,39 +35,39 @@ def load_data():
 
 # Function to create the language model and embedder (replace placeholders)
 def create_llm_and_embedder():
-    llm = LlamaCPP(
-        # You can pass in the URL to a GGML model to download it automatically
-        model_url="https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGML/blob/main/llama-2-7b-chat.ggmlv3.q2_K.bin",
-        # optionally, you can set the path to a pre-downloaded model instead of model_url
-        model_path=None,
-        temperature=0.1,
-        max_new_tokens=256,
-        # llama2 has a context window of 4096 tokens, but we set it lower to allow for some wiggle room
-        context_window=3900,
-        # kwargs to pass to __call__()
-        generate_kwargs={},
-        # kwargs to pass to __init__()
-        # set to at least 1 to use GPU
-        model_kwargs={"n_gpu_layers": 30},
-        # transform inputs into Llama2 format
-        messages_to_prompt=messages_to_prompt,
-        completion_to_prompt=completion_to_prompt,
-        verbose=True,
-    )
-    # model_url = "https://huggingface.co/TheBloke/zephyr-7B-beta-GGUF/resolve/main/zephyr-7b-beta.Q4_0.gguf"
- 
     # llm = LlamaCPP(
-    #     model_url=model_url,
+    #     # You can pass in the URL to a GGML model to download it automatically
+    #     model_url="https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGML/blob/main/llama-2-7b-chat.ggmlv3.q2_K.bin",
+    #     # optionally, you can set the path to a pre-downloaded model instead of model_url
     #     model_path=None,
     #     temperature=0.1,
     #     max_new_tokens=256,
+    #     # llama2 has a context window of 4096 tokens, but we set it lower to allow for some wiggle room
     #     context_window=3900,
+    #     # kwargs to pass to __call__()
     #     generate_kwargs={},
-    #     model_kwargs={"n_gpu_layers": 10},  # if compiled to use GPU
+    #     # kwargs to pass to __init__()
+    #     # set to at least 1 to use GPU
+    #     model_kwargs={"n_gpu_layers": 30},
+    #     # transform inputs into Llama2 format
     #     messages_to_prompt=messages_to_prompt,
     #     completion_to_prompt=completion_to_prompt,
     #     verbose=True,
     # )
+    model_url = "https://huggingface.co/TheBloke/zephyr-7B-beta-GGUF/resolve/main/zephyr-7b-beta.Q4_0.gguf"
+ 
+    llm = LlamaCPP(
+        model_url=model_url,
+        model_path=None,
+        temperature=0.1,
+        max_new_tokens=256,
+        context_window=3900,
+        generate_kwargs={},
+        model_kwargs={"n_gpu_layers": 10},  # if compiled to use GPU
+        messages_to_prompt=messages_to_prompt,
+        completion_to_prompt=completion_to_prompt,
+        verbose=True,
+    )
         
 
     # embed_model = LangchainEmbedding(
