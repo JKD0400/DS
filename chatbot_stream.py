@@ -7,6 +7,7 @@ from llama_index.llms.llama_cpp.llama_utils import (
     messages_to_prompt,
     completion_to_prompt,
 )
+from llama_index.core import ServiceContext
 
 # Import error logging and system interaction (if needed)
 import logging
