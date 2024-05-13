@@ -23,7 +23,6 @@ import torch
 import json
 import os
 
-model_url = "https://huggingface.co/TheBloke/LLaMA-7b-GGUF/blob/main/llama-7b.Q3_K_L.gguf"
 # Function to configure logging (optional)
 def configure_logging():
     logging.basicConfig(stream=sys.stdout, level=logging.INFO)
@@ -55,26 +54,21 @@ def create_llm_and_embedder():
     #     completion_to_prompt=completion_to_prompt,
     #     verbose=True,
     # )
+    model_url = "https://huggingface.co/TheBloke/zephyr-7B-beta-GGUF/resolve/main/zephyr-7b-beta.Q4_0.gguf"
+ 
     llm = LlamaCPP(
-        # You can pass in the URL to a GGML model to download it automatically
         model_url=model_url,
-        # optionally, you can set the path to a pre-downloaded model instead of model_url
         model_path=None,
         temperature=0.1,
         max_new_tokens=256,
-        # llama2 has a context window of 4096 tokens, but we set it lower to allow for some wiggle room
         context_window=3900,
-        # kwargs to pass to __call__()
         generate_kwargs={},
-        # kwargs to pass to __init__()
-        # set to at least 1 to use GPU
-        model_kwargs={"n_gpu_layers": 1},
-        # transform inputs into Llama2 format
+        model_kwargs={"n_gpu_layers": -1},  # if compiled to use GPU
         messages_to_prompt=messages_to_prompt,
         completion_to_prompt=completion_to_prompt,
         verbose=True,
     )
-    
+        
 
     # embed_model = LangchainEmbedding(
     #     HuggingFaceEmbeddings(model_name="thenlper/gte-large")  # Replace with your model
